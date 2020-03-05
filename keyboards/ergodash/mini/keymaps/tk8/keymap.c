@@ -13,13 +13,13 @@ enum custom_keycodes {
   RAISE,
   NUMPAD,
   ADJUST,
-  SCRLCK,
-  SCR_ST1,
-  SCR_ST2,
 };
 
 #define EISU JP_MEISU
 #define KANA JP_MKANA
+#define SCRLCK LCTL(LSFT(KC_POWER))   // screen lock (for macOS)
+#define KC_SS1 LSFT(LGUI(LCTL(KC_3))) // screenshot
+#define KC_SS2 LSFT(LGUI(LCTL(KC_4))) // screenshot(selected area)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------+------+--------------------+------+------+------+------+------+------+------|
    * | Ctrl |   A  |   S  |   D  |   F  |   G  |   [  |                    |   ]  |   H  |   J  |   K  |   L  |   ;  |  "   |
    * |------+------+------+------+------+------+---------------------------+------+------+------+------+------+------+------|
-   * | Shift|   Z  |   X  |   C  |   V  |   B  |NUMPAD|                    | Bksp|   N  |   M  |   ,  |   .  |   /  | Shift|
+   * | Shift|   Z  |   X  |   C  |   V  |   B  |NUMPAD|                    | Bksp |   N  |   M  |   ,  |   .  |   /  | Shift|
    * |-------------+------+------+------+------+------+------+------+------+------+------+------+------+------+-------------|
    * |  Esc |  Alt |  GUI | EISU |||||||| Lower|  F10 | Space|||||||| Space| Enter| Raise|||||||| Kana | GUI  | Home |  End |
    * ,----------------------------------------------------------------------------------------------------------------------.
@@ -73,8 +73,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_RAISE] = LAYOUT(
     KC_GRV , KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_UNDS,                        KC_PLUS, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE, \
     KC_TILD, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_LCBR,                        XXXXXXX, KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX, KC_PSCR, \
-    _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX,                        XXXXXXX, KC_BRIU, KC_BRID, KC_MUTE, XXXXXXX, XXXXXXX, SCR_ST1,  \
-    _______, _______, _______, _______,          LOWER,   XXXXXXX,_______,        _______,_______, RAISE,            _______, _______, _______, SCR_ST2   \
+    _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX,                        XXXXXXX, KC_BRIU, KC_BRID, KC_MUTE, XXXXXXX, XXXXXXX, KC_SS1,  \
+    _______, _______, _______, _______,          LOWER,   XXXXXXX,_______,        _______,_______, RAISE,            _______, _______, _______, KC_SS2   \
     ),
 
   /* NUMPAD
@@ -150,38 +150,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         layer_on(_ADJUST);
       } else {
         layer_off(_ADJUST);
-      }
-      return false;
-      break;
-    case SCRLCK:
-      if (record->event.pressed) {
-        register_code(KC_LCTL);
-        register_code(KC_LSFT);
-        register_code(KC_POWER);
-      } else {
-        clear_keyboard();
-      }
-      return false;
-      break;
-    case SCR_ST1:
-      if (record->event.pressed) {
-        register_code(KC_RGUI);
-        register_code(KC_LCTL);
-        register_code(KC_LSFT);
-        register_code(KC_3);
-      } else {
-        clear_keyboard();
-      }
-      return false;
-      break;
-    case SCR_ST2:
-      if (record->event.pressed) {
-        register_code(KC_RGUI);
-        register_code(KC_LCTL);
-        register_code(KC_LSFT);
-        register_code(KC_4);
-      } else {
-        clear_keyboard();
       }
       return false;
       break;
