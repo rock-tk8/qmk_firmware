@@ -1,13 +1,6 @@
 #include QMK_KEYBOARD_H
+#include "enums.h"
 #include "layer.h"
-
-enum layer_number {
-  _QWERTY = 0,
-  _LOWER,
-  _RAISE,
-  _NUMPAD,
-  _ADJUST,
-};
 
 // in the future, should use (1U<<_LAYER_NAME) instead, but needs to be moved to keymap,c
 #define L_BASE 0
