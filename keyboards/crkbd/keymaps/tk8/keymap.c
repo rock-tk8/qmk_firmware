@@ -17,10 +17,11 @@ enum custom_keycodes {
   ADJUST,
   BACKLIT,
   RGBRST,
+  GRAVE3,
 };
 
 enum macro_keycodes {
-  GRAVE3,
+  KC_SAMPLEMACRO,
 };
 
 //
@@ -75,9 +76,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        GRAVE3, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,    KC_7,    KC_8,    KC_9,    KC_0,  KC_EQL,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, KC_PSCR,  KC_SS1,  KC_SS2, XXXXXXX,                      XXXXXXX,    KC_4,    KC_5,    KC_6, KC_PLUS, KC_ASTR,\
+      XXXXXXX, XXXXXXX, KC_PSCR,  KC_SS1,  KC_SS2, XXXXXXX,                       KC_DOT,    KC_4,    KC_5,    KC_6, KC_PLUS, KC_ASTR,\
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_DOT,    KC_1,    KC_2,    KC_3, KC_MINS, KC_SLSH,\
+      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                         KC_0,    KC_1,    KC_2,    KC_3, KC_MINS, KC_SLSH,\
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                          KC_GUIEI,   LOWER,  KC_SPN,    KC_BSPC,   RAISE,KC_ALTKN \
                                       //`--------------------------'  `--------------------------'
